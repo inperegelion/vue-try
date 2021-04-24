@@ -23,6 +23,11 @@ const router = createRouter({
   routes,
 });
 
+/**
+ * FEATURE:
+ * 4. Using a router  methods display console.log(“PROFILE PAGE IS CLOSED”) before closing “Profile” page
+ * 5. Using a router methods display console.log(“CATALOG PAGE IS CLOSED”) before opening “Catalog” page
+ * */
 router.afterEach((to, from) => {
   console.log(composeCloseMessage(from.name, from.path));
 });

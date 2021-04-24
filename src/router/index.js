@@ -1,20 +1,20 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
 
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home,
+    name: "Catalog",
+    component: () => import("../views/Catalog.vue"),
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    path: "/profile",
+    name: "Profile",
+    component: () => import("../views/Profile.vue"),
+  },
+  {
+    path: "/helloworld",
+    name: "Helloworld",
+    component: () => import("../views/Helloworld.vue"),
   },
 ];
 
@@ -23,4 +23,14 @@ const router = createRouter({
   routes,
 });
 
+router.afterEach((to, from) => {
+  console.log(composeCloseMessage(from.name, from.path));
+});
+
 export default router;
+
+function composeCloseMessage(pageName, pagePath) {
+  return pageName
+    ? `${pageName.toUpperCase()} PAGE IS CLOSED`
+    : `PAGE ON ${pagePath.toUpperCase()} IS CLOSED`;
+}

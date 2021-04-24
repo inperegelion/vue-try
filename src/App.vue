@@ -1,10 +1,22 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="header">
+    <nav id="nav">
+      <router-link to="/">Catalog</router-link> |
+      <router-link to="/profile">Profile</router-link> |
+      <router-link to="/helloworld">Hello World</router-link>
+    </nav>
+    <LogBtn />
   </div>
   <router-view />
 </template>
+
+<script>
+import LogBtn from "@/components/LogBtn.vue";
+
+export default {
+  components: { LogBtn },
+};
+</script>
 
 <style lang="scss">
 #app {
@@ -15,7 +27,7 @@
   color: #2c3e50;
 }
 
-#nav {
+.header {
   padding: 30px;
 
   a {
